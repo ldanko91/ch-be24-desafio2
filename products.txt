@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "añadido1",
+    "description": "description1",
+    "price": 125,
+    "thumbnail": "foto2.jpg",
+    "code": "azz123",
+    "stock": 5
+  },
+  {
+    "id": 3,
+    "title": "editado3",
+    "description": "descriptionedited3",
+    "price": 121225,
+    "thumbnail": "edited.jpg",
+    "code": "edit-azz1423",
+    "stock": 44
+  }
+]

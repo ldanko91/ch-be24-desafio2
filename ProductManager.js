@@ -81,13 +81,12 @@ class ProductManager {
                 code:code,
                 stock: stock,
             }
-            let prodIndex = Products.findIndex(producto => producto.id === parseInt(prodId))
-            Products.splice(Products[prodIndex],1)
+            let prodIndex = Products.findIndex(prod => prod.id === parseInt(prodId))
+
+            Products[prodIndex] = { ...updatedProd } 
 
             return (
-                console.table(Products),
-                Products.push(updatedProd),
-                console.table(Products),
+
                 fs.writeFileSync(this.path, JSON.stringify(Products)),
                 console.log(`Producto con ID ${prodId} actualizado correctamente`)
                 )}
@@ -99,10 +98,10 @@ class ProductManager {
         if (!Products.some(producto => producto.id === prodId)) {
             console.log("El producto buscado no existe!")
         }else{
-            let prodIndex = Products.findIndex(producto => producto.id === prodId)
-            Products.splice(Products[prodIndex],1)
+            const productsFilter = Products.filter(prod => prod.id !== prodId)
+
             return (
-                fs.writeFileSync(this.path, JSON.stringify(Products)),
+                fs.writeFileSync(this.path, JSON.stringify(productsFilter, null, 2)),
                 console.log(`Producto con ID ${prodId} eliminado del listado`)
                 )}
     }
